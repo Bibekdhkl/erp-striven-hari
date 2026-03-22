@@ -45,7 +45,7 @@ export function AreaChart({ data, categories, index, colors = defaultColors, val
           <Tooltip 
             contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border)', borderRadius: '8px', fontSize: '12px' }}
             itemStyle={{ color: 'var(--text-primary)' }}
-            formatter={valueFormatter}
+            formatter={valueFormatter as any}
           />
           {categories.map((cat, i) => (
             <Area
