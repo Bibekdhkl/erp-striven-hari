@@ -1,20 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Search, Bell, Grid, Plus, MessageSquare, Clock, ArrowUpDown, Star, HelpCircle, Palette } from 'lucide-react';
+import { Search, Bell, Grid, Plus, MessageSquare, Clock, ArrowUpDown, Star, HelpCircle } from 'lucide-react';
 import { useLayout } from '@/lib/context/LayoutContext';
-import { useTheme } from 'next-themes';
 import { CommandPalette } from '@/components/ui/CommandPalette';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 export function Topbar() {
   const { toggleSidebar, isMobile } = useLayout();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    
     const handleOpen = () => setIsCommandOpen(true);
     document.addEventListener('open-command-palette', handleOpen);
     
@@ -51,15 +47,7 @@ export function Topbar() {
       {/* Right side: Actions, Profile & erpactor Logo */}
       <div className="flex items-center justify-end gap-1 sm:gap-2 shrink-0">
         
-        {mounted && (
-          <button 
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-1.5 rounded-full text-gray-500 hover:bg-gray-100 transition-colors"
-            title="Theme"
-          >
-            {theme === 'dark' ? <Palette className="h-4 w-4" /> : <Palette className="h-4 w-4" />}
-          </button>
-        )}
+        <ThemeToggle />
         
         <button className="p-1.5 rounded-full text-gray-500 hover:bg-gray-100 transition-colors hidden sm:block">
           <Plus className="h-4 w-4" />

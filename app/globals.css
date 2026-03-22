@@ -81,3 +81,226 @@
     color: var(--text-primary);
   }
 }
+
+/* ============================================
+   Realistic Light / Dark Theme Toggle
+   ============================================ */
+
+.theme-toggle-placeholder {
+  width: 56px;
+  height: 28px;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 0 12px 2px rgba(255, 180, 50, 0.25);
+}
+
+.theme-toggle--dark:hover {
+  box-shadow: 0 0 12px 2px rgba(100, 120, 200, 0.35);
+}
+
+/* ---- Track ---- */
+.theme-toggle__track {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  transition: background 0.5s ease;
+  overflow: hidden;
+}
+
+.theme-toggle--light .theme-toggle__track {
+  background: linear-gradient(135deg, #56b4f9 0%, #89d4ff 50%, #a8e0ff 100%);
+}
+
+.theme-toggle--dark .theme-toggle__track {
+  background: linear-gradient(135deg, #0d1b3e 0%, #162552 50%, #1a2d5e 100%);
+}
+
+/* ---- Stars ---- */
+.theme-toggle__stars {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s ease;
+}
+
+.theme-toggle--light .theme-toggle__stars {
+  opacity: 0;
+}
+
+.theme-toggle--dark .theme-toggle__stars {
+  opacity: 1;
+}
+
+.theme-toggle__star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ---- Clouds ---- */
+.theme-toggle__clouds {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s ease;
+}
+
+.theme-toggle--light .theme-toggle__clouds {
+  opacity: 1;
+}
+
+.theme-toggle--dark .theme-toggle__clouds {
+  opacity: 0;
+}
+
+.theme-toggle__cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+}
+
+.theme-toggle__cloud--1 {
+  width: 16px;
+  height: 6px;
+  bottom: 5px;
+  left: 6px;
+  animation: drift 6s ease-in-out infinite alternate;
+}
+
+.theme-toggle__cloud--2 {
+  width: 12px;
+  height: 5px;
+  top: 5px;
+  left: 22px;
+  animation: drift 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(4px); }
+}
+
+/* ---- Thumb ---- */
+.theme-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  transition: left 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+              background 0.45s ease,
+              box-shadow 0.45s ease,
+              transform 0.45s ease;
+  z-index: 10;
+}
+
+.theme-toggle--light .theme-toggle__thumb {
+  left: 3px;
+  background: linear-gradient(135deg, #ffcc33 0%, #ffaa00 100%);
+  box-shadow: 0 0 8px 2px rgba(255, 170, 0, 0.45),
+              inset 0 -2px 4px rgba(200, 120, 0, 0.2);
+}
+
+.theme-toggle--dark .theme-toggle__thumb {
+  left: 31px;
+  background: linear-gradient(135deg, #e8e8e8 0%, #c8c8d0 100%);
+  box-shadow: 0 0 8px 2px rgba(200, 200, 230, 0.3),
+              inset 0 -2px 4px rgba(100, 100, 130, 0.25);
+}
+
+/* ---- Sun Rays ---- */
+.theme-toggle__sun-rays {
+  position: absolute;
+  inset: -4px;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+.theme-toggle--light .theme-toggle__sun-rays {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-toggle--dark .theme-toggle__sun-rays {
+  opacity: 0;
+  transform: rotate(60deg);
+}
+
+.theme-toggle__ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 5px;
+  margin-left: -1px;
+  margin-top: -16px;
+  background: rgba(255, 200, 50, 0.7);
+  border-radius: 1px;
+  transform-origin: 1px 16px;
+}
+
+/* ---- Moon Craters ---- */
+.theme-toggle__moon-craters {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease;
+}
+
+.theme-toggle--light .theme-toggle__moon-craters {
+  opacity: 0;
+}
+
+.theme-toggle--dark .theme-toggle__moon-craters {
+  opacity: 1;
+}
+
+.theme-toggle__crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(160, 160, 180, 0.35);
+}
+
+.theme-toggle__crater--1 {
+  width: 5px;
+  height: 5px;
+  top: 4px;
+  left: 5px;
+}
+
+.theme-toggle__crater--2 {
+  width: 3px;
+  height: 3px;
+  top: 12px;
+  left: 10px;
+}
+
+.theme-toggle__crater--3 {
+  width: 4px;
+  height: 4px;
+  top: 8px;
+  left: 3px;
+}
