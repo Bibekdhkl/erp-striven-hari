@@ -45,7 +45,7 @@ export function PieChart({
           <Tooltip 
             contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border)', borderRadius: '8px', fontSize: '12px' }}
             itemStyle={{ color: 'var(--text-primary)' }}
-            formatter={valueFormatter}
+            formatter={valueFormatter as any}
           />
           <Legend iconType="circle" layout="vertical" verticalAlign="middle" align="right" wrapperStyle={{ fontSize: '12px' }} />
         </RechartsPieChart>

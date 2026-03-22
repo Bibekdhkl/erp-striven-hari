@@ -37,7 +37,7 @@ export function LineChart({ data, categories, index, colors = defaultColors, val
           <Tooltip 
             contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border)', borderRadius: '8px', fontSize: '12px' }}
             itemStyle={{ color: 'var(--text-primary)' }}
-            formatter={valueFormatter}
+            formatter={valueFormatter as any}
           />
           <Legend iconType="circle" wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
           {categories.map((cat, i) => (
